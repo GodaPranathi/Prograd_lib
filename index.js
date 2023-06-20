@@ -9,7 +9,6 @@ $(document).ready(function() {
   //listener for search button
   $("#btn2").click(function() {
     outputList.innerHTML = ""; //empty html output
-    //document.body.style.backgroundImage = "url('')";
      searchData = $("#btn1").val();
      //handling empty search input field
      if(searchData === "" || searchData === null) {
@@ -40,10 +39,7 @@ $(document).ready(function() {
       $("#btn1").val(""); //clear search box
    });
 
-   /*
-   * function to display result in index.html
-   * @param response
-   */
+
    function displayResults(response) {
       for (var i = 0; i < response.items.length; i+=2) {
         item = response.items[i];
@@ -65,26 +61,22 @@ $(document).ready(function() {
         // in production code, item.text should have the HTML entities escaped.
         outputList.innerHTML += '<div class="row mt-4">' +
                                 formatOutput(bookImg1, title1, author1, publisher1, bookLink1, bookIsbn) +
-                                formatOutput(bookImg2, title2, author2, publisher2, bookLink2, bookIsbn2) +
+                                //formatOutput(bookImg2, title2, author2, publisher2, bookLink2, bookIsbn2) +
                                 '</div>';
 
         console.log(outputList);
       }
    }
 
-   /*
-   * card element formatter using es6 backticks and templates (indivial card)
-   * @param bookImg title author publisher bookLink
-   * @return htmlCard
-   */
+  
    function formatOutput(bookImg, title, author, publisher, bookLink, bookIsbn) {
      // console.log(title + ""+ author +" "+ publisher +" "+ bookLink+" "+ bookImg)
-     var viewUrl = 'book.html?isbn='+bookIsbn; //constructing link for bookviewer
+     var viewUrl = 'book.html?isbn='+bookIsbn; 
      var htmlCard = `<div class="col-lg-6">
        <div class="card" style="">
          <div class="row no-gutters">
            <div class="col-md-4">
-             <img src="${bookImg}" class="card-img" alt="...">
+             <img id=im1 src="${bookImg}" class="card-img" alt="...">
            </div>
            <div class="col-md-8">
              <div class="card-body">
@@ -92,6 +84,7 @@ $(document).ready(function() {
                <p class="card-text">Author: ${author}</p>
                <p class="card-text">Publisher: ${publisher}</p>
                <a target="_blank" href="${viewUrl}" class="btn btn-info">Read Book</a>
+              
              </div>
            </div>
          </div>
@@ -103,6 +96,6 @@ $(document).ready(function() {
    //handling error for empty search box
    function displayError() {
      alert("search term can not be empty!")
-   }
+   }
 
 });
