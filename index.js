@@ -41,7 +41,7 @@ $(document).ready(function() {
 
 
    function displayResults(response) {
-      for (var i = 0; i < response.items.length; i+=2) {
+      for (var i = 0; i < response.items.length; i+=1) {
         item = response.items[i];
         title1 = item.volumeInfo.title;
         author1 = item.volumeInfo.authors;
